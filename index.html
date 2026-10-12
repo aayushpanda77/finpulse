@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FinPulse — Smart Loan &amp; Credit Checker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css?v=5.0" />
+</head>
+<body>
+  <div class="dashboard-shell">
+    <!-- LEFT SIDEBAR (Extej Style Pure White Navigation + Easy Sliders) -->
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <a href="#top" class="brand-logo">
+          <div class="cube-logo">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M12 2L3 7v10l9 5 9-5V7l-9-5z" fill="url(#cubeGrad)" />
+              <path d="M12 22V12M12 12L3 7M12 12l9-5" stroke="#ffffff" stroke-width="1.8" stroke-linecap="round" />
+              <defs>
+                <linearGradient id="cubeGrad" x1="3" y1="2" x2="21" y2="22" gradientUnits="userSpaceOnUse">
+                  <stop offset="0%" stop-color="#FF5E62" />
+                  <stop offset="100%" stop-color="#FF9966" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="brand-name">FinPulse</span>
+        </a>
+        <a href="../" class="collapse-btn" title="Back to Portfolio">←</a>
+      </div>
+
+      <div class="sidebar-group">
+        <p class="sidebar-kicker">MENU</p>
+        <nav class="sidebar-nav">
+          <button type="button" class="nav-item" data-preset="prime">
+            <span class="nav-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.21 15.89A10 10 0 1 1 8 2.83"/><path d="M22 12A10 10 0 0 0 12 2v10z"/></svg>
+              <span>Overview</span>
+            </span>
+            <span class="nav-right-meta"><span>1</span><span>›</span></span>
+          </button>
+
+          <button type="button" class="nav-item" data-preset="starter">
+            <span class="nav-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+              <span>Credit Score</span>
+            </span>
+            <span class="nav-right-meta"><span>1</span><span>›</span></span>
+          </button>
+
+          <button type="button" class="nav-item active" data-preset="prime">
+            <span class="nav-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg>
+              <span>Loan Calculator</span>
+            </span>
+            <span class="nav-right-meta"><span>1</span><span>›</span></span>
+          </button>
+
+          <button type="button" class="nav-item" data-preset="stretched">
+            <span class="nav-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M16 8h-6a2 2 0 1 0 0 4h4a2 2 0 1 1 0 4H8"/><path d="M12 18V6"/></svg>
+              <span>Monthly Budget</span>
+            </span>
+            <span class="nav-right-meta"><span>4</span><span>›</span></span>
+          </button>
+
+          <button type="button" class="nav-item" data-preset="distressed">
+            <span class="nav-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Safety Check</span>
+            </span>
+            <span class="nav-right-meta"><span>2</span><span>›</span></span>
+          </button>
+
+          <button type="button" class="nav-item" id="navScrollShap">
+            <span class="nav-left">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              <span>Why This Result?</span>
+            </span>
+            <span class="nav-right-meta"><span>6</span><span>›</span></span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Interactive Sliders inside Sidebar with Simple Everyday Labels -->
+      <div class="sidebar-group sliders-box">
+        <div class="sliders-box-head">
+          <p class="sidebar-kicker">ADJUST YOUR DETAILS</p>
+          <button type="button" id="resetBtn" class="mini-reset">Reset</button>
+        </div>
+
+        <div class="sidebar-slider-item">
+          <div class="slider-top">
+            <span>Yearly Income</span>
+            <strong id="valIncome">$92,000</strong>
+          </div>
+          <input type="range" id="inputIncome" min="24000" max="220000" step="2000" value="92000" />
+        </div>
+
+        <div class="sidebar-slider-item">
+          <div class="slider-top">
+            <span>Loan Needed</span>
+            <strong id="valLoan">$18,000</strong>
+          </div>
+          <input type="range" id="inputLoan" min="3000" max="75000" step="1000" value="18000" />
+        </div>
+
+        <div class="sidebar-slider-item">
+          <div class="slider-top">
+            <span>Monthly Bills %</span>
+            <strong id="valDti">16%</strong>
+          </div>
+          <input type="range" id="inputDti" min="4" max="62" step="1" value="16" />
+        </div>
+
+        <div class="sidebar-slider-item">
+          <div class="slider-top">
+            <span>Credit Card Used %</span>
+            <strong id="valUtil">22%</strong>
+          </div>
+          <input type="range" id="inputUtil" min="2" max="95" step="1" value="22" />
+        </div>
+
+        <div class="sidebar-slider-item">
+          <div class="slider-top">
+            <span>Years Using Credit</span>
+            <strong id="valHistory">8.5 yrs</strong>
+          </div>
+          <input type="range" id="inputHistory" min="0.5" max="25" step="0.5" value="8.5" />
+        </div>
+
+        <div class="sidebar-slider-item">
+          <div class="slider-top">
+            <span>Missed Payments</span>
+            <strong id="valDelinq">0</strong>
+          </div>
+          <input type="range" id="inputDelinq" min="0" max="5" step="1" value="0" />
+        </div>
+      </div>
+
+      <div class="sidebar-footer">
+        <p class="sidebar-kicker">PROJECT LINKS</p>
+        <a href="https://github.com/aayushpanda77" target="_blank" rel="noopener noreferrer" class="doc-link">
+          <span>GitHub Source Code</span>
+          <span>›</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN AREA -->
+    <div class="main-column">
+      <!-- Top Header Bar -->
+      <header class="topbar">
+        <div class="search-box">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2">
+            <circle cx="11" cy="11" r="8" />
+            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+          </svg>
+          <input type="text" id="globalSearchInput" placeholder="Search anything (income, bills, card usage, missed payments)..." />
+        </div>
+
+        <div class="topbar-right">
+          <button type="button" id="exportJsonBtn" class="icon-pill" title="Download Loan Summary (.json)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+            </svg>
+          </button>
+
+          <div class="profile-chip">
+            <img src="./github-avatar.png" alt="Ayush Panda" class="profile-avatar" onerror="this.src='https://avatars.githubusercontent.com/u/265581780?v=4'" />
+            <div class="profile-meta">
+              <span class="profile-name">Ayush Panda</span>
+              <span class="profile-role">Data &amp; AI Builder</span>
+            </div>
+          </div>
+
+          <button type="button" id="stressToggleSwitch" class="theme-switch" title="Switch Dark / Light Theme">
+            <span class="switch-knob"></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Main Dashboard Content -->
+      <main class="content-area">
+        <div class="page-title-row">
+          <h1 class="page-title">Smart Loan &amp; Credit Checker</h1>
+          <span id="activeScenarioBadge" class="live-status-pill">● Safe Borrower Profile</span>
+        </div>
+
+        <!-- TOP ROW: Safe Limit Card + Dashed "+ RANDOM" + Credit Score Card + Monthly Payment Card -->
+        <section class="top-cards-grid">
+          <!-- Card 1: Safe Loan Limit (Extej "Balance" Card Layout) -->
+          <article class="white-card balance-card">
+            <div class="card-top-row">
+              <div class="card-label-group">
+                <span class="mini-wallet-icon">▣</span>
+                <span class="card-label">Safe Loan Limit</span>
+              </div>
+              <span class="currency-tag">USD ▾</span>
+            </div>
+
+            <div id="kpiSafeLimit" class="big-balance-num">$58,500.00</div>
+
+            <!-- 4-Color Segmented Allocation Bar -->
+            <div class="segmented-bar">
+              <span id="segIncome" class="seg seg-orange" style="width: 42%;"></span>
+              <span id="segDti" class="seg seg-blue" style="width: 24%;"></span>
+              <span id="segUtil" class="seg seg-teal" style="width: 20%;"></span>
+              <span id="segHist" class="seg seg-pink" style="width: 14%;"></span>
+            </div>
+
+            <div class="seg-legend">
+              <span><i class="dot-orange"></i>Income</span>
+              <span><i class="dot-blue"></i>Bills</span>
+              <span><i class="dot-teal"></i>Card Used</span>
+              <span><i class="dot-pink"></i>Credit Age</span>
+            </div>
+
+            <div class="card-profit-row">
+              <div>
+                <span class="profit-label">Extra safe borrowing room</span>
+                <div id="kpiSafetyMargin" class="profit-val">+$40,500.00</div>
+              </div>
+              <span id="kpiRepayPct" class="profit-pct">93.2% Safe</span>
+            </div>
+          </article>
+
+          <!-- Dashed "+ RANDOM" Divider Slot -->
+          <button type="button" id="randomBorrowerSlot" class="dashed-add-slot" title="Try a Random Person">
+            <span>+ RANDOM</span>
+          </button>
+
+          <!-- Card 2: Credit Score & Approval Safety -->
+          <article class="white-card asset-card">
+            <div class="card-top-row">
+              <div class="card-label-group">
+                <span class="coin-badge coin-orange">★</span>
+                <span class="card-label">Credit Score</span>
+              </div>
+              <span class="currency-tag">SCORE ▾</span>
+            </div>
+
+            <div class="asset-mid-row">
+              <div>
+                <div id="kpiCreditScore" class="asset-main-num">768 / 850</div>
+                <div id="kpiDefaultProb" class="asset-sub-num">Risk of Late Pay: 6.8%</div>
+              </div>
+              <div class="asset-rate-tag" id="kpiTierBadge">Easy Approval</div>
+            </div>
+
+            <div class="card-profit-row">
+              <div>
+                <span class="profit-label" id="kpiCompareLabel">Safer than average person</span>
+                <div id="kpiShapShift" class="profit-val">+11.2% Safer</div>
+              </div>
+              <span id="kpiFlaggedCount" class="profit-pct">0 / 6 Warnings</span>
+            </div>
+
+            <!-- 3 Easy Preset Buttons (Orange, Orange, Coral Pink) -->
+            <div class="action-buttons-row">
+              <button type="button" class="act-btn act-orange preset-trigger" data-preset="prime">Safe User</button>
+              <button type="button" class="act-btn act-orange preset-trigger" data-preset="stretched">Average User</button>
+              <button type="button" class="act-btn act-coral preset-trigger" data-preset="distressed">Risky User</button>
+            </div>
+          </article>
+
+          <!-- Card 3: Monthly Payment (EMI) -->
+          <article class="white-card asset-card">
+            <div class="card-top-row">
+              <div class="card-label-group">
+                <span class="coin-badge coin-blue">◈</span>
+                <span class="card-label">Monthly Payment</span>
+              </div>
+              <span class="currency-tag">3 YRS ▾</span>
+            </div>
+
+            <div class="asset-mid-row">
+              <div>
+                <div id="kpiMonthlyEmi" class="asset-main-num">$551 / mo</div>
+                <div id="kpiTotalLoan" class="asset-sub-num">Loan Needed: $18,000</div>
+              </div>
+              <div id="kpiAprRate" class="asset-rate-tag">Interest = 6.45%</div>
+            </div>
+
+            <div class="card-profit-row">
+              <div>
+                <span class="profit-label">Total extra interest (3 yrs)</span>
+                <div id="kpiTotalInterest" class="profit-val">+$1,836.00</div>
+              </div>
+              <span id="kpiSpreadPct" class="profit-pct">Low Interest</span>
+            </div>
+
+            <div class="action-buttons-row">
+              <button type="button" class="act-btn act-orange preset-trigger" data-preset="starter">New Earner</button>
+              <button type="button" id="stressActionBtn" class="act-btn act-orange">Test +2% Rate</button>
+              <button type="button" id="exportActionBtn" class="act-btn act-coral">Save Report</button>
+            </div>
+          </article>
+        </section>
+
+        <!-- MIDDLE ROW: Full-Width Orange Spline Area Chart Card -->
+        <section class="white-card chart-section-card">
+          <div class="chart-card-header">
+            <div>
+              <h2 class="section-heading">Loan Approval &amp; Safety Trend</h2>
+              <p class="section-sub">Shows how safe this loan is based on your income and monthly bills</p>
+            </div>
+
+            <div class="timeframe-pills" role="group" aria-label="Quick Scenarios">
+              <button type="button" class="tf-pill active" data-preset="prime">SAFE</button>
+              <button type="button" class="tf-pill" data-preset="starter">NEW</button>
+              <button type="button" class="tf-pill" data-preset="stretched">BUSY</button>
+              <button type="button" class="tf-pill" data-preset="distressed">RISKY</button>
+              <button type="button" class="tf-pill" id="tfRandomBtn">RANDOM</button>
+              <button type="button" class="tf-pill" id="tfResetBtn">RESET</button>
+            </div>
+          </div>
+
+          <div class="area-chart-stage">
+            <!-- Floating White Tooltip Card over the Chart (Extej Style) -->
+            <div id="chartFloatingTooltip" class="chart-tooltip-box">
+              <span class="tt-label">Safe Loan Limit</span>
+              <div class="tt-row">
+                <strong id="ttConfidenceVal">$58,500.00</strong>
+                <span id="ttDeltaVal" class="tt-green">93.2% Safe</span>
+              </div>
+            </div>
+
+            <svg id="trajectorySvg" viewBox="0 0 920 230" preserveAspectRatio="none" role="img" aria-label="Loan Approval Safety Chart"></svg>
+          </div>
+        </section>
+
+        <!-- BOTTOM ROW: Sample Borrower Cards + Plain-English Breakdown Table -->
+        <section id="shapSection" class="white-card cards-showcase-section">
+          <div class="chart-card-header">
+            <div>
+              <h2 class="section-heading">Sample People &amp; Simple Breakdown</h2>
+              <p class="section-sub">Click any card below to test a sample person, or look at the table to see what helps or hurts loan approval</p>
+            </div>
+            <button type="button" id="addSimulationBtn" class="btn-orange-add">+ TRY RANDOM PERSON</button>
+          </div>
+
+          <!-- 3 Mastercard-Style FinTech Sample Cards -->
+          <div class="credit-cards-row">
+            <div class="fintech-card active-fintech-card" data-preset="prime">
+              <div class="fc-top">
+                <div class="mc-circles">
+                  <span class="mc-red"></span>
+                  <span class="mc-orange"></span>
+                </div>
+                <span class="fc-check">✓</span>
+              </div>
+              <div class="fc-number" id="card1Number">7680  9200  1800  0016</div>
+              <div class="fc-bottom">
+                <div>
+                  <span class="fc-meta-label">Sample Person</span>
+                  <strong class="fc-meta-val">SAFE EARNER</strong>
+                </div>
+                <div>
+                  <span class="fc-meta-label">Late Pay Risk</span>
+                  <strong class="fc-meta-val" id="card1Pd">6.8%</strong>
+                </div>
+                <span class="fc-tier-tag">EASY APPROVAL</span>
+              </div>
+            </div>
+
+            <div class="fintech-card" data-preset="stretched">
+              <div class="fc-top">
+                <div class="mc-circles">
+                  <span class="mc-red"></span>
+                  <span class="mc-orange"></span>
+                </div>
+              </div>
+              <div class="fc-number">6420  5400  2800  0043</div>
+              <div class="fc-bottom">
+                <div>
+                  <span class="fc-meta-label">Sample Person</span>
+                  <strong class="fc-meta-val">HIGH CARD BILLS</strong>
+                </div>
+                <div>
+                  <span class="fc-meta-label">Late Pay Risk</span>
+                  <strong class="fc-meta-val">36.4%</strong>
+                </div>
+                <span class="fc-tier-tag">MEDIUM RISK</span>
+              </div>
+            </div>
+
+            <div class="fintech-card" data-preset="distressed">
+              <div class="fc-top">
+                <div class="mc-circles">
+                  <span class="mc-red"></span>
+                  <span class="mc-orange"></span>
+                </div>
+              </div>
+              <div class="fc-number">4850  3600  3200  0054</div>
+              <div class="fc-bottom">
+                <div>
+                  <span class="fc-meta-label">Sample Person</span>
+                  <strong class="fc-meta-val">MISSED PAYMENTS</strong>
+                </div>
+                <div>
+                  <span class="fc-meta-label">Late Pay Risk</span>
+                  <strong class="fc-meta-val">82.1%</strong>
+                </div>
+                <span class="fc-tier-tag">HIGH RISK</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Easy-to-Understand Breakdown Table -->
+          <div class="diag-table-wrap">
+            <table class="extej-table">
+              <thead>
+                <tr>
+                  <th>What We Check</th>
+                  <th>Your Number</th>
+                  <th>How It Affects Your Loan</th>
+                  <th>Healthy Goal</th>
+                  <th>Result</th>
+                </tr>
+              </thead>
+              <tbody id="shapTableBody">
+                <!-- Populated dynamically by app.js -->
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <script src="./app.js?v=5.0"></script>
+</body>
+</html>
